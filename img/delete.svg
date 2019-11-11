@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="85px" height="53px" viewBox="0 0 85 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Delete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy-18" transform="translate(-263.000000, -1164.000000)">
+            <g id="Delete" transform="translate(263.000000, 1164.000000)">
+                <g id="Group-10">
+                    <rect id="Rectangle-Copy-2" stroke="#48FFA4" stroke-width="4" fill="#272727" x="2" y="2" width="81" height="49" rx="8"></rect>
+                    <g id="Group-9" transform="translate(25.500000, 20.000000)">
+                        <path d="M29.3072985,7 L10,7" id="Path" stroke="#48FFA4" stroke-width="4" stroke-linecap="round"></path>
+                        <path d="M7.37529493,2.58428012 L12.1803354,11.2813831 C12.4474145,11.7647951 12.272042,12.3731884 11.7886299,12.6402675 C11.6405746,12.7220662 11.4741895,12.7649726 11.3050405,12.7649726 L1.69495954,12.7649726 C1.14267479,12.7649726 0.694959539,12.3172573 0.694959539,11.7649726 C0.694959539,11.5958235 0.737865892,11.4294384 0.819664612,11.2813831 L5.62470507,2.58428012 C5.89178417,2.10086808 6.50017745,1.92549558 6.98358949,2.19257468 C7.14843895,2.28365194 7.28421766,2.41943066 7.37529493,2.58428012 Z" id="Triangle" fill="#48FFA4" transform="translate(6.500000, 6.882486) rotate(-90.000000) translate(-6.500000, -6.882486) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

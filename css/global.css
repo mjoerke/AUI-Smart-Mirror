@@ -1,0 +1,151 @@
+/*-----Global Styles-----*/
+
+body {
+	font-family: 'IBM Plex Mono';
+	font-weight: 600;
+	font-size: 30px;
+	color: white;
+	background-color: black;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content {
+	height: 100%;
+	padding: 160px 150px 0 150px;
+}
+
+.content .withVideo {
+	padding: 160px 150px 0 150px;
+}
+
+p.text {
+	font-size: 50px;
+	line-height: 75px;
+	margin-bottom: 1em;
+}
+p.smallText {
+	font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+strong {
+	color: #48ffa4;
+}
+
+img {
+	width: auto;
+	height: 100%;
+}
+
+/*-----Fullscreen navigation-----*/
+
+.fullscreen {
+	position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    left: 0;
+    top: 0;
+    transition: opacity 2s ease, visibility 0s 2s;
+}
+
+.hiddenScreen {
+	visibility: hidden;
+  	opacity: 0; 
+}
+
+.visibleScreen {
+	opacity: 1;
+	visibility: visible;
+	transition: visibility 0s;
+}
+
+/*-----Reset browser defaults-----*/
+
+a, a:hover {
+	text-decoration: none;
+	color: inherit;
+}
+
+*:focus {
+    outline: none;
+}
+
+/*-----Loading Circle-----*/
+/*https://codepen.io/ConAntonakos/pen/ryMaOX*/
+.loadingCircle {
+	animation: rotate 2s linear infinite;
+	height: 100px;
+	width: 100px;
+	position: relative;
+}
+
+.path {
+	stroke-dasharray: 1,200;
+	stroke-dashoffset: 0;
+	animation:
+	dash 1.5s ease-in-out infinite;
+	stroke-linecap: round;
+	stroke: white;
+}
+
+@keyframes rotate{
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes dash{
+	0%{
+		stroke-dasharray: 1,200;
+		stroke-dashoffset: 0;
+	}
+	50%{
+		stroke-dasharray: 89,200;
+		stroke-dashoffset: -35;
+	}
+	100%{
+		stroke-dasharray: 89,200;
+		stroke-dashoffset: -124;
+	}
+}
+
+/*-----Progress Bars-----*/
+.progressBarContainer {
+	display: inline;
+}
+
+.progressBarContainer > label{
+	display: inline-block;
+    font-weight: 400;
+    font-family: 'IBM Plex Mono';
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.progressBarBorder {
+	width: auto;
+	height: 50px;
+	position: relative;
+	background-color: #272727;
+	/*box-shadow: 0 0 0 3px white;*/
+	border-radius: 10px !important;
+}
+
+.progressBar {
+	background-color: #48ffa4;
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 50px;
+	position: absolute;
+	border-radius: 10px !important;
+}

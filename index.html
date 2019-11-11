@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AUI Demo</title>
+	<meta charset='utf8'>
+
+	<!-- CSS RESET -->
+	<link rel="stylesheet" href="css/reset.css">
+
+	<!-- IBM PLEX MONO-->
+	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,600,700&display=swap" rel="stylesheet">
+
+	<!-- JAVSCRIPT -->
+	<!-- jQuery -->
+	<script src="src/jquery.min.js" type="text/javascript"></script>
+	<!-- glider.js (carousel menu) -->
+	<link href="src/glider.min.css" type="text/css" rel="stylesheet">
+	<script src="src/glider.min.js" type="text/javascript"></script>
+	<!-- affectiva SDK (emotion) -->
+	<!-- <script type="text/javascript" src="https://download.affectiva.com/js/3.2.1/affdex.js"></script> -->
+	<script type="text/javascript" src="src/affectiva/affdex.js"></script>
+	<!-- face-api.js (face recognition) -->
+	<script type="text/javascript" src='src/face-api.min.js'></script>
+	<!-- three.js (3d graphics)-->
+	<script type="text/javascript" src='src/three.min.js'></script>
+	<!-- paper.js (2d graphics) -->
+	<script type="text/javascript" src='src/paper-core.min.js'></script>
+
+	<!-- CUSTOM CSS -->
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- FAVICON -->
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+</head>
+<body>
+	<div id='affdex_elements'>
+	</div>
+	<div id='videoContainer' class='fullscreen center'>
+		<div style="position: absolute">
+			<div id='scanner'></div>
+			<div id='countdown'></div>
+			<canvas id="overlay"></canvas>
+			<video id="video" autoplay='true'></video>
+			<canvas id="videoCanvas"/></canvas>
+		</div>
+	</div>
+
+	<div id="loadingScreen" class='fullscreen center visibleScreen'>
+		<p id='faceAPILoaded' style="color: red">Face API</p>
+		<p id='affdexLoaded' style="color: red">Affectiva</p>
+		<svg class="loadingCircle">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+		</svg>
+	</div>
+
+	<div id="idleScreen" class='fullscreen hiddenScreen'>
+		<canvas id="idleCanvas" width=1200 height=1920/></canvas>
+	</div>
+
+	<!-- <div id="recognitionScreen" class='fullscreen center hiddenScreen'>
+		<div id='recognitionText'>Gesicht wird erkannt ...</div>
+		<img src='img/puff.svg' width='100'>
+	</div> -->
+
+	<div id="newUserScreen" class='fullscreen center hiddenScreen glider-contain'>
+		<!-- <ol class="carousel-indicators">
+			<li data-target="#newUserScreen" data-slide-to="0" class="active"></li>
+			<li data-target="#newUserScreen" data-slide-to="1"></li>
+			<li data-target="#newUserScreen" data-slide-to="2"></li>
+			<li data-target="#newUserScreen" data-slide-to="3"></li>
+		</ol> -->
+		<div id="glider">
+			<div class="glider-item" id='slide0'>
+				<div class='content'>
+					<p class='text'>
+						Hallo! Schön, dass <br>
+						Du hier bist.
+					</p>
+					<p class='text'>
+						Ich nutze eine Gesichtserkennungs-Software um Dich zu erkennen.
+					</p>
+					<p class='text'>
+						Dazu mache ich Bilder von Dir und verarbeite diese mit meiner künstlichen Intelligenz. Ich werde diese Daten nicht an Dritte weitergeben, versprochen.
+					</p>
+					<p class='text'>
+						Wenn ich Dich kennenlernen darf, <strong>bestätige</strong> bitte Deine Einverständnis mit der <strong>Enter-Taste</strong>.
+					</p>
+					<div class='buttonContainer'>
+						<div class='buttonBox'>
+							<a href="#newUserScreen" role="button">
+								<img class="button" src='img/esc.png' style='width: 50%;height: auto;padding-left: 25%;'>
+							</a>
+							<span>Abbrechen</span>
+						</div>
+						<div class='buttonBox'>
+							<a href="#newUserScreen" role="button">
+								<img class="button" src='img/enter.svg'>
+							</a>
+							<span>Bestätigen</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="glider-item" id='slide1'>
+				<div class='content'>
+					<p class='text'>
+						Bitte verhalte Dich wie auf den Bildern dargestellt.
+					</p>
+					
+					<div class='instructionBox'>
+						<img class='instructionImg' src='img/right.png'>
+						<img class='instructionLabel' src='img/check.svg'>
+						
+					</div>
+
+					<div class='instructionBox'>
+						<img class='instructionImg' src='img/wrong.png'>
+						<img class='instructionLabel' src='img/x.svg'>
+					</div>
+					
+
+					<div class='buttonContainer'>
+						<div class='buttonBox'>
+							<a class="carousel-control-next" href="#newUserScreen" role="button" data-slide="next">
+								<img class="button" src='img/enter.svg'>
+							</a>
+							<span>Weiter</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="glider-item" id='slide2'>
+				<div class='content'>
+					<p class='text'>
+						Verrätst Du mir Deinen Namen? Ich würde Dich gerne kennenlernen.
+					</p>
+					<input id="nameInput" autofocus></input>
+					<p class='text' id="inputText">
+						<strong>Bestätige</strong> die Eingabe der <strong>Enter-Taste</strong>.
+					</p>
+					<div class='buttonContainer'>
+						<div class='buttonBox'>
+							<a class="carousel-control-next" href="#newUserScreen" role="button" data-slide="next">
+								<img class="button" src='img/enter.svg'>
+							</a>
+							<span>Bestätigen</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="glider-item" id='slide3'>
+				<div class='content withVideo'>
+					<p class='smallText'>
+						Nutzerprofile wird erstellt
+					</p>
+					<div class="progressBarContainer">
+						<div class="progressBarBorder">
+							<div class="progressBar" id='userCaptureProgress' style='width:0%'></div>
+						</div>
+						<label id='userCaptureProgressLabel'>0%</label>
+					</div>
+					<div class='buttonContainer' id='hiddenButton'>
+						<div class='buttonBox'>
+							<a class="carousel-control-next" href="#newUserScreen" role="button" data-slide="next">
+								<img class="button" src='img/enter.svg'>
+							</a>
+							<span>Weiter</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="glider-item" id='slide4'>
+				<div class='content withVideo'>
+					<p class='text'>
+						Ich erkenne Dich jetzt <strong><span id='userName'></span></strong>.
+					</p>
+					<p class='text'>
+						Du bist <strong><span id='userAge'></span></strong> Jahre alt und <strong><span id='userGender'></span></strong>.
+					</p>
+					<p class='text'>
+						Wenn Du soweit bist kannst Du die Anwendung mit der <strong>Enter-Taste</strong> starten.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div role="tablist" id="dots"></div>
+	</div>
+
+	<div id="trackingScreen" class='fullscreen hiddenScreen'>
+		<canvas id='trackingCanvas' width="1200" height="900"></canvas>
+		<div class='trackingContainer'>
+			<div class='trackingRow'>
+				<span>Emotionen</span>
+				<div id='userStats'>
+					<span id='name'>Matthew</span>
+					<span> | </span>
+					<span id='age'>15-25</span>
+					<span> | </span>
+					<span id='gender'>Männlich</span>
+				</div>
+			</div>
+			<div class='trackingRow'>
+				<div class='progressBarContainer'>
+					<label>Wut</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="anger" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Verachtung</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="contempt" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Ekel</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="disgust" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Angst</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="fear" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Freude</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="joy" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Traurigkeit</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="sadness" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Verwunderung</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="surprise" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Ausdruckskraft</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="engagement" style="width:25%"></div>
+					</div>
+				</div>
+				<div class='progressBarContainer'>
+					<label>Aufmerksamkeit</label>
+					<div class="progressBarBorder">
+						<div class="progressBar" id="attention" style="width:25%"></div>
+					</div>
+				</div>
+			</div>
+			<div class='trackingRow withColumns'>
+				<div class='trackingColumn'>
+					<div class='progressBarContainer'>
+						<label>Stirn runzeln</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="browFurrow" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Braue anheben</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="browRaise" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Augen schließen</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="eyeClosure" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Augen geweitet</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="eyeWiden" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Offener Kiefer</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="jawDrop" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Kinn heben</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="chinRaise" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Augenlieder zusammenkneifen</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="lidTighten" style="width:25%"></div>
+						</div>
+					</div>
+				</div>
+				<div class='trackingColumn'>
+					<div class='progressBarContainer'>
+						<label>Mundwinkel senken</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="lipCornerDepressor" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Lippen zusammenpressen</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="lipPress" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Kussmund</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="lipPucker" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Nase runzeln</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="noseWrinkle" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Lächeln</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="smile" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Schmunzeln</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="smirk" style="width:25%"></div>
+						</div>
+					</div>
+					<div class='progressBarContainer'>
+						<label>Oberlippe kräuseln</label>
+						<div class="progressBarBorder">
+							<div class="progressBar" id="upperLipRaise" style="width:25%"></div>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div class='trackingColumn'>
+					<label>Rotationsverfolgung</label>
+					<div class='rotationCanvasContainer'>
+						<canvas id='rotationCanvas' width='300' height='300'></canvas>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- SETUP WEBCAM -->
+	<script type="text/javascript" src='js/webcam.js'></script>
+	<!-- SETUP STORAGE I/O -->
+	<script type="text/javascript" src='js/localStorage.js'></script>
+	<!-- DRAW IDLE MODEL -->
+	<script type="text/javascript" src='js/idle.js'></script>
+	<!-- RENDER UI NAVIGATION -->
+	<script type="text/javascript" src='js/nav.js'></script>
+	<!-- NEW USER SCREEN -->
+	<script type="text/javascript" src='js/newUser.js'></script>
+	<!-- RENDER TRACKING INTERFACE -->
+	<script type="text/javascript" src='js/drawing.js'></script>
+	<!-- BIND TRACKING LIBRARIRIES -->
+	<script type="text/javascript" src='js/tracking.js'></script>
+	<script type="text/javascript" src='js/controller.js'></script>
+</body>
+</html>

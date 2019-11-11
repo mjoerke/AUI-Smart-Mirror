@@ -1,0 +1,282 @@
+/* VIDEO */
+
+#videoContainer {
+	z-index: 10;
+	background: none;
+	justify-content: flex-start;
+	padding-top: 300px;
+	transform: scaleX(-1);
+	transition: visibility 0s !important;
+}
+
+#videoCanvas {
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+}
+
+#video {
+	border-radius: 15px;
+}
+
+#overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: opacity 0.5s linear;
+}
+
+#affdex_elements {
+	margin-left: -10000px;
+}
+
+/*LOADING SCREEN*/
+
+#loadingScreen {
+	z-index: 5;
+	font-size: 30px;
+	font-style: italic;
+	background-color: black;
+}
+
+#loadingScreen > p {
+	margin-bottom: 20px;
+}
+
+/* IDLE SCREEN */ 
+
+#idleScreen {
+	z-index: 4;
+	font-size: 4em;
+/*	background-image: url('../img/idle.png');
+    background-size: contain;*/
+}
+
+/* RECOGNTION SCREEN */ 
+
+#recognitionScreen {
+	z-index: 3;
+	background-color: black;
+}s
+
+/*-----NEW USER SCREEN-----*/
+
+#newUserScreen {
+	z-index: 2;
+}
+
+#glider {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#dots {
+	position: absolute;
+    bottom: 40px;
+}
+
+.glider-track {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.glider-item {
+	width: 100%;
+	height: 100%;
+}
+
+.glider-dot {
+	width: 25px !important;
+	height: 25px !important;
+}
+
+.glider-dot.active {
+	background-color: #48ffa4 !important;
+	border-color: #48ffa4 !important;
+}
+
+.buttonContainer {
+	position: absolute;
+    bottom: 150px;
+    display: flex;
+    flex-direction: row;
+    width: calc(100vw - 300px);
+    justify-content: center;
+}
+
+.buttonBox {
+	width: 300px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #48ffa4;
+}
+
+.button {
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+#hiddenButton {
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+
+.instructionBox {
+	position: relative;
+	background-color: #272727;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	height: 400px;
+	padding: 40px;
+	margin: 100px 0;
+}
+
+.buttonBox > a {
+	height: 100px;
+}
+
+.instructionLabel {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	bottom: -50px;
+	right: 75px;
+}
+
+input {
+	border: none;
+    font-size: 3em;
+    font-weight: 400;
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: #272727;
+    padding: 20px 50px;
+    border-radius: 25px;
+    color: #48ffa4;
+    width: 800px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.withVideo {
+	padding-top: 1000px;
+}
+
+#scanner {
+	width: 3px;
+    height: 500px;
+    z-index: 100;
+    background-color: #48ffa4;
+    box-shadow: 0 0 5px 5px #48ffa4;
+    position: fixed;
+    left: 280px;
+    top: 290px;
+    transition: left 2s linear;
+}
+
+#scanner.left {
+	left: 760px;
+}
+
+#countdown {
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+    transform: scaleX(-1);
+}
+
+/* TRACKING SCREEN */
+#trackingScreen {
+	background-color: black;
+	z-index: 1;
+}
+
+#trackingCanvas {
+	position: fixed;
+	top: 510px;
+	z-index: 2;
+	transform: scaleX(-1);
+}
+
+.trackingContainer {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	padding: 50px;
+}
+
+.trackingRow {
+	display: block;
+	width: 100%;
+	font-size: 1.25em;
+	margin-bottom: 25px;
+}
+
+.trackingRow.withColumns {
+	margin-bottom: 0;
+
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+
+.trackingColumn {
+	flex-grow: 1;
+	margin-right: 50px;
+}
+
+.trackingRow label {
+	text-align: left;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 0.75em;
+}
+
+.trackingColumn label {
+	text-align: left;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 0.5em;
+}
+
+.trackingColumn .progressBarBorder, 
+.trackingColumn .progressBar {
+	height: 30px;
+}
+
+.trackingRow .progressBar {
+	background-color: white;
+}
+
+.trackingColumn.lastColumn {
+	margin-right: 0;
+}
+
+.rotationCanvasContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+#userStats {
+	color: #48ffa4;
+	float: right
+}

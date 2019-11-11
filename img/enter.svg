@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="59px" height="81px" viewBox="0 0 59 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Enter</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy-18" transform="translate(-263.000000, -1246.000000)">
+            <g id="Enter" transform="translate(263.000000, 1246.000000)">
+                <g id="Group-8">
+                    <g id="Group-7-Copy-2" fill="#272727" stroke="#48FFA4" stroke-width="4">
+                        <g id="Group-12">
+                            <g id="Group-7-Copy">
+                                <g id="Group-5">
+                                    <g id="Group-3">
+                                        <g id="Group">
+                                            <path d="M57,71 L57,8 C57,4.6862915 54.3137085,2 51,2 L8,2 C4.6862915,2 2,4.6862915 2,8 L2,31.0461538 C2,34.3598623 4.6862915,37.0461538 8,37.0461538 L16.1267606,37.0461538 L16.1267606,71 C16.1267606,75.418278 19.7084826,79 24.1267606,79 L49,79 C53.418278,79 57,75.418278 57,71 Z" id="Combined-Shape"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="Group-9" transform="translate(24.000000, 24.000000)">
+                        <polyline id="Path" stroke="#48FFA4" stroke-width="4" stroke-linecap="round" points="19.6536492 9.09494702e-13 19.6536492 19.434931 10 19.434931"></polyline>
+                        <path d="M7.37529493,15.0192111 L12.1803354,23.7163141 C12.4474145,24.1997261 12.272042,24.8081194 11.7886299,25.0751985 C11.6405746,25.1569972 11.4741895,25.1999036 11.3050405,25.1999036 L1.69495954,25.1999036 C1.14267479,25.1999036 0.694959539,24.7521883 0.694959539,24.1999036 C0.694959539,24.0307545 0.737865892,23.8643694 0.819664612,23.7163141 L5.62470507,15.0192111 C5.89178417,14.5357991 6.50017745,14.3604266 6.98358949,14.6275057 C7.14843895,14.718583 7.28421766,14.8543617 7.37529493,15.0192111 Z" id="Triangle" fill="#48FFA4" transform="translate(6.500000, 19.317417) rotate(-90.000000) translate(-6.500000, -19.317417) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
